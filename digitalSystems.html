@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <title></title>
-<!-- 2019-02-03 Sun 02:44 -->
+<!-- 2019-02-03 Sun 14:24 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="Org-mode">
@@ -189,6 +189,32 @@ $(function() {
     $('.bs-docs-sidebar').affix();
 });
 </script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
 </head>
 <body>
 <div id="content" class="container">
@@ -382,6 +408,64 @@ left most bit represents the sign of a number
 </div>
 </li></ol>
 </div>
+
+<div id="outline-container-sec-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> Addition of unsigned numbers</h4>
+<div class="outline-text-4" id="text-1-1-3">
+</div><ol class="org-ol"><li><a id="sec-1-1-3-1" name="sec-1-1-3-1"></a>4-bit numbers<br ><ol class="org-ol"><li><a id="sec-1-1-3-1-1" name="sec-1-1-3-1-1"></a>we seperate the two numbers to multiple addition operations for each of their correspoding pairs<br ></li>
+<li><a id="sec-1-1-3-1-2" name="sec-1-1-3-1-2"></a>each operation will generate a <i>carry</i> and a <i>sum</i>.<br ></li>
+<li><a id="sec-1-1-3-1-3" name="sec-1-1-3-1-3"></a>the <i>sum</i> is represented by the XOR function of the operation and the carry is represented by the AND function of the two bits.<br ></li>
+<li><a id="sec-1-1-3-1-4" name="sec-1-1-3-1-4"></a>the resulting circuit of two inputs <b>x</b> and <b>y</b> and resulting outputs <b>c</b> and <b>s</b> is called a half adder.<br ></li></ol>
+</li>
+
+<li><a id="sec-1-1-3-2" name="sec-1-1-3-2"></a>multi-bit numbers<br ><ol class="org-ol"><li><a id="sec-1-1-3-2-1" name="sec-1-1-3-2-1"></a>we add the two binaries together generating sums and carries although there won't be a carry for the first case (there is no c<sub>0</sub>)<br ></li>
+<li><a id="sec-1-1-3-2-2" name="sec-1-1-3-2-2"></a>from the previous point we realize that we can generate the sum s<sub>i</sub> and <i>next carry-in (c<sub>i+1</sub>)</i> provided x<sub>i</sub>, y<sub>i</sub> and c<sub>i</sub><br ><div class="outline-text-6" id="text-1-1-3-2-2">
+<p>
+<br >
+<br >
+the optimal c<sub>i+1</sub> sum of products realization is:<br >
+</p>
+\begin{align*}
+c_{i+1} = x_i y_i + x_i c_i + y_i c_i
+\end{align*}
+
+\begin{align*} 
+s_i &= x_i y_i \lnot c_i + x_i \lnot y_i c_i + \lnot x_i y_i c_i + \lnot x_i \lnot y_i \lnot c_i\\
+    &= x_i \oplus y_i \oplus c_i 
+\end{align*}
+<p>
+     for the SOP realization of s<sub>i</sub> :<br >
+     truth table for s<sub>i</sub>: <br >
+c<sub>i</sub> \ x<sub>i</sub> y<sub>i</sub>
+</p>
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+</colgroup>
+<tbody>
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">0</td>
+<td class="text-right">1</td>
+</tr>
+
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">1</td>
+<td class="text-right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ol>
+</li></ol>
+</div>
 </div>
 </div>
 </div><div class="col-md-3"><nav id="table-of-contents">
@@ -398,7 +482,7 @@ left most bit represents the sign of a number
 </div></div></div>
 <footer id="postamble" class="">
 <div><p class="author">Author: Mohamed Alsoudani</p>
-<p class="date">Created: 2019-02-03 Sun 02:44</p>
+<p class="date">Created: 2019-02-03 Sun 14:24</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="http://orgmode.org">Org-mode</a> 9.2)</p>
 </div>
 </footer>
