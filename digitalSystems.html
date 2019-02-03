@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title></title>
+<!-- 2019-02-03 Sun 02:44 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Mohamed Alsoudani">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title"></h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Digital Systems design notes for school</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> lecture 2 notes</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> binary numbers</h4>
+<div class="outline-text-4" id="text-1-1-1">
+</div><ol class="org-ol"><li><a id="sec-1-1-1-1" name="sec-1-1-1-1"></a>Unsigned Numbers<br ><div class="outline-text-5" id="text-1-1-1-1">
+<p>
+all bits represent a magnitude of a positive integer
+</p>
+</div>
+</li>
+<li><a id="sec-1-1-1-2" name="sec-1-1-1-2"></a>Singed Numbers<br ><div class="outline-text-5" id="text-1-1-1-2">
+<p>
+left most bit represents the sign of a number
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Different basis of numbers</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+
+<col  class="right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="text-right">Binary</th>
+<th scope="col" class="text-right">Hexadecimal</th>
+<th scope="col" class="text-right">Decimal</th>
+<th scope="col" class="text-right">Octal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">0</td>
+<td class="text-right">0</td>
+<td class="text-right">0</td>
+</tr>
+
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">1</td>
+<td class="text-right">1</td>
+<td class="text-right">1</td>
+</tr>
+
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">2</td>
+<td class="text-right">2</td>
+<td class="text-right">2</td>
+</tr>
+
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">3</td>
+<td class="text-right">3</td>
+<td class="text-right">3</td>
+</tr>
+
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">4</td>
+<td class="text-right">4</td>
+<td class="text-right">4</td>
+</tr>
+
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">5</td>
+<td class="text-right">5</td>
+<td class="text-right">5</td>
+</tr>
+
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">6</td>
+<td class="text-right">6</td>
+<td class="text-right">6</td>
+</tr>
+
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">7</td>
+<td class="text-right">7</td>
+<td class="text-right">7</td>
+</tr>
+
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">8</td>
+<td class="text-right">8</td>
+<td class="text-right">10</td>
+</tr>
+
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">9</td>
+<td class="text-right">9</td>
+<td class="text-right">11</td>
+</tr>
+
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">A</td>
+<td class="text-right">10</td>
+<td class="text-right">12</td>
+</tr>
+
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">B</td>
+<td class="text-right">11</td>
+<td class="text-right">13</td>
+</tr>
+
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">C</td>
+<td class="text-right">12</td>
+<td class="text-right">14</td>
+</tr>
+
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">D</td>
+<td class="text-right">13</td>
+<td class="text-right">15</td>
+</tr>
+
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">E</td>
+<td class="text-right">14</td>
+<td class="text-right">16</td>
+</tr>
+
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">F</td>
+<td class="text-right">15</td>
+<td class="text-right">17</td>
+</tr>
+
+<tr>
+<td class="text-right">0</td>
+<td class="text-right">10</td>
+<td class="text-right">16</td>
+<td class="text-right">20</td>
+</tr>
+
+<tr>
+<td class="text-right">1</td>
+<td class="text-right">11</td>
+<td class="text-right">17</td>
+<td class="text-right">21</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ol class="org-ol"><li><a id="sec-1-1-2-1" name="sec-1-1-2-1"></a>changing from Binary to Octal<br ><div class="outline-text-5" id="text-1-1-2-1">
+<p>
+(101011010111)<sub>2</sub> &rarr; (101 011 010 111)<sub>2</sub> &rarr; (5 3 2 7)<sub>8</sub>  &rarr; (5327)<sub>8</sub>
+</p>
+</div>
+</li>
+<li><a id="sec-1-1-2-2" name="sec-1-1-2-2"></a>changing from Binary to Hexidecimal<br ><div class="outline-text-5" id="text-1-1-2-2">
+<p>
+(101011010111)<sub>2</sub> &rarr; (1010 1101 0111)<sub>2</sub> &rarr; (A D 7)<sub>10</sub> &rarr; (AD7)<sub>10</sub>
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Digital Systems design notes for school</a>
+<ul class="nav">
+<li><a href="#sec-1-1">1.1. lecture 2 notes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="author">Author: Mohamed Alsoudani</p>
+<p class="date">Created: 2019-02-03 Sun 02:44</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="http://orgmode.org">Org-mode</a> 9.2)</p>
+</div>
+</footer>
+</body>
+</html>

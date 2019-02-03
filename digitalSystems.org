@@ -1,0 +1,38 @@
+* Digital Systems design notes for school
+
+** lecture 2 notes
+*** binary numbers
+**** Unsigned Numbers
+     all bits represent a magnitude of a positive integer
+**** Singed Numbers
+     left most bit represents the sign of a number
+
+*** Different basis of numbers
+
+    | Binary | Hexadecimal | Decimal | Octal |
+    |--------+-------------+---------+-------|
+    |      0 |           0 |       0 |     0 |
+    |      1 |           1 |       1 |     1 |
+    |      0 |           2 |       2 |     2 |
+    |      1 |           3 |       3 |     3 |
+    |      0 |           4 |       4 |     4 |
+    |      1 |           5 |       5 |     5 |
+    |      0 |           6 |       6 |     6 |
+    |      1 |           7 |       7 |     7 |
+    |      0 |           8 |       8 |    10 |
+    |      1 |           9 |       9 |    11 |
+    |      0 |           A |      10 |    12 |
+    |      1 |           B |      11 |    13 |
+    |      0 |           C |      12 |    14 |
+    |      1 |           D |      13 |    15 |
+    |      0 |           E |      14 |    16 |
+    |      1 |           F |      15 |    17 |
+    |      0 |          10 |      16 |    20 |
+    |      1 |          11 |      17 |    21 |
+    |--------+-------------+---------+-------|
+
+**** changing from Binary to Octal
+     (101011010111)_2 \to (101 011 010 111)_2 \to (5 3 2 7)_8  \to (5327)_8
+**** changing from Binary to Hexidecimal
+     (101011010111)_2 \to (1010 1101 0111)_2 \to (A D 7)_10 \to (AD7)_10
+ 
