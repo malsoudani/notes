@@ -1,0 +1,77 @@
+
+#+TITLE: Moe's React Notes
+* react anatomy
+** impoorts/utils that react provide
+
+
+*** =react from 'react'= 
+    some general notes on react would go here
+**** methods
+***** =.createelement=
+      this function main purpose is to generate react elements from javascript syntax (arguments) and make them ready to be rendered by the =reactdom='s =render= method.
+      since the arguments can be javascript *returns* that means we can nest this function to create elements that require *sub-elements* something like =<ol><li></li></ol>= could be done this way:
+      #+begin_src js
+          const element = react.createelement('ol', null, react.createelement('li', null, 'my first li element!'));
+      #+end_src
+      the second argument in that function is dedicated for props. read about props in the props section.
+
+
+*** ={component} from react=
+    this gives the component parent class that your components will extend and will over ride its functions.
+    #+begin_src js
+    class list extends component {
+       constructor() {
+          this.state = {cool stuff!}
+       }
+       render() {
+          return ()
+       }
+    } 
+    #+end_src
+**** methods:
+***** =.render=
+      this is basically to render the element. here you override to put the most barebone elements of your component _as you want them to be rendered!_
+***** =constructor=
+      this constructs your component! ask your self _what are the things that i'd love to initialize here?_ and put the code for it, usually people tend to initiaalize their component's =state= here!
+
+
+*** =reactdom from 'react-dom'=
+**** methods
+***** =.render=
+      render takes in an element created by =react.createeelement= and a target dom node to render that element in for example:      
+      #+begin_src js
+          const element = react.createelement('p', null, 'this is a paragraph element');
+          reactdom.render(element, document.getelementbyid('root')); // using jquery selector notation to find the correct element
+      #+end_src
+      
+      think of it this way: =react.createelement= creates the virtual dom element which is later used to create a "real" dom element using =reactdom.render=
+
+
+
+
+** jsx components
+*** class component
+    a class component is made to encapsulate jsx syntax and render it! it is mainly used to help us with saperation of concerns with react components, namely, that is if you write component you shouldn't worry about other sibling components and it also drives the idea of component reusability.
+    #+begin_src js
+    class list extends component {
+       render() {
+          return (<ol>
+             <li>some list item here</li>
+          </ol>)
+       }
+    }
+    #+end_src
+*** functional stateless components
+    these components are usaully created as regular javascript functions here is an example of on of these:
+    
+    #+begin_src js
+    function List(props) {
+       return (<ol>
+          <ListElement content={props.content[1]} />
+       </ol>)
+    }
+    #+end_src
+      
+* Create-react-app
+
+  pretty cool things about create react app
