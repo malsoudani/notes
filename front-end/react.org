@@ -33,7 +33,24 @@
       this is basically to render the element. here you override to put the most barebone elements of your component _as you want them to be rendered!_
 ***** =constructor=
       this constructs your component! ask your self _what are the things that i'd love to initialize here?_ and put the code for it, usually people tend to initiaalize their component's =state= here!
-
+***** =setState=
+      since class components can have state then we must have a function to alter that state! well .. thats it and it takes an arrow function arguing the state of the component and returning an alteration to it.
+***** =bind=
+      some times when you pass a single method to multiples of comoponents, you may lose context of what =this= is since you called it in like a million instances of =Component= so in your constructor you redefine your called function to be bound to the function implemented in the class. Here is an example:
+      
+      #+begin_src js
+      class list extends component {
+         constructor() {
+            this.state = {cool stuff!};
+            //here is the binding magic
+            this.myCustomMethod = this.myCustomMethod.bind(this);
+         }
+         myCustomMethod() {
+            this.setState((state) => ({some cool code goes here}));
+         }
+      } 
+      #+end_src
+      
 
 *** =reactdom from 'react-dom'=
 **** methods
@@ -44,8 +61,7 @@
           reactdom.render(element, document.getelementbyid('root')); // using jquery selector notation to find the correct element
       #+end_src
       
-      think of it this way: =react.createelement= creates the virtual dom element which is later used to create a "real" dom element using =reactdom.render=
-
+      think of it this way: =react.createElement= creates the virtual dom element which is later used to create a "real" dom element using =reactdom.render=
 
 
 
@@ -72,6 +88,8 @@
     }
     #+end_src
       
+
 * Create-react-app
 
   pretty cool things about create react app
+  
