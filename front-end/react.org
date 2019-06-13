@@ -4,7 +4,7 @@
 ** impoorts/utils that react provide
 
 
-*** =react from 'react'= 
+*** =React from react= 
     some general notes on react would go here
 **** methods
 ***** =.createelement=
@@ -52,7 +52,7 @@
       #+end_src
       
 
-*** =reactdom from 'react-dom'=
+*** =ReactDOM from react-dom=
 **** methods
 ***** =.render=
       render takes in an element created by =react.createeelement= and a target dom node to render that element in for example:      
