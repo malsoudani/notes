@@ -65,7 +65,7 @@
       think of it this way: =react.createElement= creates the virtual dom element which is later used to create a "real" dom element using =reactdom.render=
 
 
-
+      
 ** jsx components
 *** class component
     a class component is made to encapsulate jsx syntax and render it! it is mainly used to help us with saperation of concerns with react components, namely, that is if you write component you shouldn't worry about other sibling components and it also drives the idea of component reusability.
@@ -94,3 +94,6 @@
 
   pretty cool things about create react app
   
+* JavaScript Neat Tricks used in react
+** anonymous functions (arrow functions)
+   
