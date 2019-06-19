@@ -64,7 +64,38 @@
       
       think of it this way: =react.createElement= creates the virtual dom element which is later used to create a "real" dom element using =reactdom.render=
 
+** React Router      
+*** Browser Router:
+    the browser router keeps track of the url changes and it wraps your main application component or what ever component that you'll be defining your routes in
+*** Link
+    much like a hyper-link it changes the url upon clicking on it
+    the link component just has a =to= attribute to clarify the route that it is getting to redirect to once clicked.
+    example:
 
+     #+begin_src js
+     <Link to="/something"/> 
+     #+end_src
+
+*** Route
+     the route contain a url fragment to refer to a page like
+
+     #+begin_src js
+     <Route path="/something" path={() => (<div>something here ....</div>)}/> 
+     #+end_src
+
+     and if you are rendering specific component you could do:
+
+     #+begin_src js
+     import Something from 'some/path/something';
+
+     .
+     .
+     .
+     <Route path="/something" component={Something}/> 
+     #+end_src
+
+     also be sure to watch out that when you are running multiple routes to use the =exact= key word because it will try to regex match all the routes that contain the required route and renders its components if you don't have it.
+    
       
 ** jsx components
 *** class component
@@ -88,8 +119,7 @@
        </ol>)
     }
     #+end_src
-      
-
+    
 * Create-react-app
 
   pretty cool things about create react app
