@@ -1,0 +1,9 @@
+#+TITLE: Moe's Perl Language features Notes
+
+* what are Data Containers?
+
+* what are Code References?
+
+* is there a strategy of choosing the right tools in perl?
+ 
+* when are objects a good thing? 

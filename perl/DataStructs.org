@@ -1,0 +1,59 @@
+#+TITLE: Moe's Perl DesignPatterns Notes
+
+* Perl Design Patterns:
+** Iterators
+*** The Gang of four suggests in pure OOP languages such as java, iterators are walkable objects such as arrays, hashes, trees ...etc. That is these complex data structures would implement a function that returns a walkable version of an iterator.
+    An Example of a Java code that implements iterator object:
+    #+begin_src java
+    for (Iterator iter = hash.keySet().iterator(); iter.hasNext();) {
+        Object key   = iter.next();
+        Object value = hash.get(key);
+        System.out.println(key + "\t" + value);
+    }
+    #+end_src
+    Notes from the code snippet:
+**** the hash =object= has something that can be walked (its keys)
+**** this =keySet()= will give you an Iterator when calling its =iterator()= method
+**** the iterator responds to =hasNext()= truthiness to know if there are more things to be walked
+
+*** Perl gives the convenience of only returning an array of the items to be walked and foreach handles the rest
+    A Perl Alternative to the code above:
+    #+begin_src perl
+    foreach my $key (keys %hash) {
+        print "$key\t$hash{$key}\n";
+    }
+    #+end_src
+**** Perl nails down one concept here and that it is; if a pattern is so valuable then it must be a part of the core of the language
+**** =foreach= in the previous example implements the iterator pattern even for user defined modules, an example of that would be =XML::DOM=
+    #+begin_src perl
+    foreach my $element ($doc->getElementsByTagName("tag")) {
+        # ... process the element ...
+    }
+    #+end_src
+    as you can see here =->getElementsByTagName("tag")= simply returns an array that is walkable by =foreach=
+
+*** 
+
+** Decorators
+*** what is a Decorator?
+    A Decorator is an object wrapper that responds to the same API as the object itself.
+    in Perl design pattens articles on perl.com, Phil Crow, uses the example of wanting to compress a file after it was written! in this case then we would want to pass a the file writer to the decorator constructor and the decorator's write method would first compress the file and call the write method of the file writer it wraps!
+*** using shell tools
+*** Tying
+*** Decorating lists
+
+** FlyWeight
+
+** Template Methods 
+
+** Builder
+
+** Interpreter
+
+** Abstract Factory
+
+** Composite
+
+** Proxy
+
+   
