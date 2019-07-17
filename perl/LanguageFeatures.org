@@ -7,3 +7,12 @@
 * is there a strategy of choosing the right tools in perl?
  
 * when are objects a good thing? 
+
+* perltie
+** History
+*** Kenn Thomposon created a way of storing data and retrieving this data by the use of a single key and storing this data in fixed-size buckets and to enable fast retrtieval of that data he used hashing techniques to do that (sounds a lot like modern day redis)
+**** DBM stands for DataBase Manager
+*** prior to the release of perl 5, perl programmers were used to using =dbmopen()= to access their dbm and have it be automagically formated as a =%HASH= in their program
+*** before perl 5, the language was built with one dbm library or another but not both and you couldn't extend the use of this mechanism to another packages or variables!
+*** perl 5 came up with =perltie= which allows for tying a variable to a class (package) that will provide the implementation of the access methods of that variable! meaning that once this action is performed accessing a tied variable automatically triggers method calls in that class.
+*** the complexity of the class is hidden behind perl's magic method calls (magic methods are written ALL CAPS to indicated that they are called implicitly and not explicitly just like =BEGIN()= and =END()= functions)
