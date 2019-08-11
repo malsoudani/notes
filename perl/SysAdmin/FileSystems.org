@@ -8,3 +8,7 @@
 *** a new more enhanced file system came out called "VFAT"
 *** this is what modern windows system would refer to as FAT
 **** VFAT hid all of the filename restrictions from the user and it did it with a very creative hack; VFAT used a chain of directory/filename to work in the ability to create longer filenames to the basic FAT system.
+**** for compatibility, filenames that are longer than 8 characters long are still accessable as 8 char aliase (DOS style), for example a file named =Downloaded Program Files= can also be accessed as =DOWNLO~1=.
+
+* windows FAT vs. Unix FFS
+** FAT file system is case-*insensitive*
