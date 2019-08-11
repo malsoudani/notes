@@ -1,0 +1,10 @@
+ #+TITLE: Moe's Perl Sys-Admin tools: FileSystems
+
+* windows: 
+** Origins of the FAT file system: 
+   the FAT file system used in modern windows systems uses and extended version of the basic FAT file system that was used in DOS.
+*** basic (real-mode) FAT file system 
+**** in real-mode FAT file system, the files must comply with the 8.3 specification which means that the file should be named with 8 alpha numeric characters and it would be followed by a period and then it would be followed by a suffix of up to three characters in length. 
+*** a new more enhanced file system came out called "VFAT"
+*** this is what modern windows system would refer to as FAT
+**** VFAT hid all of the filename restrictions from the user and it did it with a very creative hack; VFAT used a chain of directory/filename to work in the ability to create longer filenames to the basic FAT system.

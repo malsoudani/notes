@@ -1,0 +1,11 @@
+
+#+TITLE: Moe's Perl System Adminstration tools Glossary
+
+* FFS:
+  the Berkeley "Fast File System" which is a file system that is considered the common ansestor for most modern unix derivatives.
+* FAT:
+  the "File Allocation Table" is a file system is a windows based file system.
+* FAT32: 
+  same as FAT but better (allows for larger partitions and smaller cluster sizes).
+* NTFS:
+  NT FileSystem .... more on this later.
