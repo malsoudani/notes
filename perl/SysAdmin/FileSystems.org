@@ -11,4 +11,9 @@
 **** for compatibility, filenames that are longer than 8 characters long are still accessable as 8 char aliase (DOS style), for example a file named =Downloaded Program Files= can also be accessed as =DOWNLO~1=.
 
 * windows FAT vs. Unix FFS
-** FAT file system is case-*insensitive*
+*** FAT file system is case-insensitive and Unix FFS is not
+*** instead of a forward slash, FAT uses backward slash "\" as a path saperator
+**** this has direct remifications for the perl programmer because the backward slash is considered a quoting chacater in perl.
+*** FAT files and directories have special flag associated with them that are called attributes. Example attributes include =Read-only= and =System=
+*** the root of a FAT filesystem starts with the drive letter on which the filesystem resides.
+
