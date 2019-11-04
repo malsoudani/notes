@@ -1,0 +1,13 @@
+#+TITLE: DBIx::Class notes
+* Glossary:
+** Object Relational Mapper (ORM):
+    what is an ORM? .... an ORM is a way to translate database rows/relations ... etc to constructs that are considered native to a certain programming language, and these constructs are usually objects.
+    An ORM is a piece of software that maps database tables/rows to classes and objects, usually a database table is represented by a class and different operations of certain table that are usually done with a certain query language such as SQL are defined as methods of that class.
+    By mapping database tables to classes, instances of these classes/tables will represent a subset of the table that you can customize however you see fit. Note that a centeral part of any good ORM is that it can still relate different instances of a class which are representations of rows to where their original location is in the original databse.
+    With tables represented as classes and customizable subsets of these tables are accessable as objects/instances of these classes, there is limitless posibilities to how to CRUD a certain database, enough possibilies to fit every taste and need for how to interact with a database without having to write or maintain code in a database specific query language.
+** DBIx::Class:
+    in the perl programming language the most common interface used to interact with a database is the DBI module by Tim Bunce. DBI mapped the basic interaction with a database independent of its type to perl syntax. Its richness provided a great way to interact with databases but it didn't target ease of use. Which meant that we still needed a way to interact with a database in a flexable way removing the need to learn another syntax and take the richness of DBI and build on top of it to be flexable, extensible and most importantly progressive. DBIx::Class comes to the rescue as it not only inherent from DBI and adapts its richness and robust API but also it provided a layer that made database interactions far more easier that of DBI and allowed for flexibality when writing data related code.
+** Schema:
+    DBIx term for "Model" in the MVC pattern! it refers to the class that maps the table directly. NOTE: you'll see the statement "gerenating schemas" get thrown around a lot, it refers to the idea of generating =.pm= files out of a database
+** Different Schemas generated:
+*
