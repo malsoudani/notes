@@ -1,5 +1,5 @@
 #+TITLE: DBIx::Class notes
-* Glossary:
+* Glossary
 ** Object Relational Mapper (ORM):
     what is an ORM? .... an ORM is a way to translate database rows/relations ... etc to constructs that are considered native to a certain programming language, and these constructs are usually objects.
     An ORM is a piece of software that maps database tables/rows to classes and objects, usually a database table is represented by a class and different operations of certain table that are usually done with a certain query language such as SQL are defined as methods of that class.
@@ -10,16 +10,36 @@
 ** Schema:
     DBIx term for "Model" in the MVC pattern! it refers to the class that maps the table directly. NOTE: you'll see the statement "gerenating schemas" get thrown around a lot, it refers to the idea of generating =.pm= files out of a database
 ** Different Schemas generated:
-*** =Result= Class:
+*** =Result= Class
     a Class whose instances/objects represet a single result from a ResultSet, it often represents only a single row from a database.
-*** =ResultSet= Class:
+*** =ResultSet= Class
     =DBIx::Class::ResultSet= represet a database query including all of the conditions/clauses, the simplest form of this class is the entire table. 
-*** =Row= Class:
+*** =Row= Class
     =DBIx::Class::Row= represents a single component of a =ResultSet= or =Result= class, which means its a single row or parts of a single row as dictated by the =ResultSet= or =Result= classes. delete and update operations are invoked on objects of this type.
-* Creating Result Classes:
+* Creating Result Classes
   you can either create result classes by hand or you can let =DBIx::Class::Schema::Loader= take care of generating your classes for you from an existing database.
   here is an example command of how you can do that:
 
   #+begin_src bash
     perl -MDBIx::Class::Schema::Loader=make_schema_at,dump_to_dir:./lib -e 'make_schema_at("Breadcrumbs::Schema", { debug => 1 }, [ "dbi:mysql:dbname=Breadcrumbs","user", "passwd" ])'
   #+end_src
+
+  if the database layout changes just re-run =make_schema_at= and everything will work out just fine
+
+
+* Setting up relationships
+  relationships are the most important part of DBIx::Class, beside relationships, and automattic Schema generations, other features of DBIx are easily added to DBI ..
+  there are two very important relationships that have to be implemented (if =Schema::Loader= fails to create them for you)
+** =belongs_to= 
+  #+begin_src bash
+    #### within Name.pm we are creating a belongs_to relationship so that it belongs to the Path module, and we are passing the forgien key here to create the relationship
+    _PACKAGE__->belongs_to('path', 'Breadcrumbs::Schema::Path', 'PathID');
+
+    #### later on in another file when we can just load a name instance and by DBIx::Class magic we get the path we want and it allows for a very nice syntax this way:
+    print $name->path;
+
+    we can also set the path id for a newly created name by doing the following:
+    $name->path($path_object);
+    $name->update;
+  #+end_src
+** =has_many=
