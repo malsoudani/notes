@@ -10,4 +10,13 @@
 ** Schema:
     DBIx term for "Model" in the MVC pattern! it refers to the class that maps the table directly. NOTE: you'll see the statement "gerenating schemas" get thrown around a lot, it refers to the idea of generating =.pm= files out of a database
 ** Different Schemas generated:
-*
+*** =Result= Class:
+    a Class whose instances/objects represet a single result from a ResultSet, it often represents only a single row from a database.
+*** =ResultSet= Class:
+    =DBIx::Class::ResultSet= represet a database query including all of the conditions/clauses, the simplest form of this class is the entire table. 
+*** =Row= Class:
+    =DBIx::Class::Row= represents a single component of a =ResultSet= or =Result= class, which means its a single row or parts of a single row as dictated by the =ResultSet= or =Result= classes. delete and update operations are invoked on objects of this type.
+* Creating Result Classes:
+  you can either create result classes by hand or you can let =DBIx::Class::Schema::Loader= take care of generating your classes for you from an existing database.
+  here is an example command of how you can do that:
+  =perl -MDBIx::Class::Schema::Loader=make_schema_at,dump_to_dir:./lib -e 'make_schema_at("Breadcrumbs::Schema", { debug => 1 }, [ "dbi:mysql:dbname=Breadcrumbs","user", "passwd" ])'=
