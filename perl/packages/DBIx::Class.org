@@ -19,4 +19,5 @@
 * Creating Result Classes:
   you can either create result classes by hand or you can let =DBIx::Class::Schema::Loader= take care of generating your classes for you from an existing database.
   here is an example command of how you can do that:
+
   =perl -MDBIx::Class::Schema::Loader=make_schema_at,dump_to_dir:./lib -e 'make_schema_at("Breadcrumbs::Schema", { debug => 1 }, [ "dbi:mysql:dbname=Breadcrumbs","user", "passwd" ])'=
