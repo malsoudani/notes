@@ -1,0 +1,72 @@
+#+TITLE: Creating a Custom Shell in Golang
+** introduction
+  today I wanted to practice my golang skills so I wanted to create a process monitor in golang, I wanted the monitor to be a running/non-stopping feed on the command line so I investigated creating a custom shell with golang and I didn't how to create one, just to be clear, I wanted something interactive and running always while it updated the status all the time. 
+  It took me a while to find a helpful article/stackoverflow thread, but eventually hackernoon had my answer and Iman Tumorang was the author of the article: https://hackernoon.com/today-i-learned-making-a-simple-interactive-shell-application-in-golang-aa83adcb266a
+
+  here is the code that was written:
+
+  #+begin_src go
+  package main
+
+  import (
+    "bufio"
+    "fmt"
+    "os"
+    "os/exec"
+    "strings"
+  )
+
+  func main() {
+    for {
+      fmt.Print("$ ")
+      reader := bufio.NewReader(os.Stdin)
+      cmdString, err := reader.ReadString('\n')
+      if err != nil {
+        fmt.Println(os.Stderr, err)
+      }
+
+      cmdString = strings.TrimSuffix(cmdString, "\n")
+      cmdStringsArr := strings.Fields(cmdString)
+      cmd := exec.Command(cmdStringsArr[0], cmdStringsArr[1:]...)
+      cmd.Stderr = os.Stderr
+      cmd.Stdout = os.Stdout
+      if err := cmd.Run(); err != nil {
+        fmt.Println(os.Stderr, err)
+      }
+    }
+  }
+  #+end_src
+
+  when this code is excuted a propmt with show up waiting for input started with the =$=
+
+** lets talk about the code
+   I started my program by creating a buffered io reader from what ever is being passed in to the program and since the input of the program was from the command line, that meant =os.Stdin= was the right choice for the job
+   #+begin_src go
+    fmt.Print("$ ") // lets print something first to denote the beginning of the line .. notice that this is not gonna be counted as Stdin
+    reader := bufio.NewReader(os.Stdin) // lets get a buffered io copy of the input
+    cmdString, err := reader.ReadString('\n') // read the input as a string until you run into the end of the line
+    if err != nil { // handle the errors for later
+      fmt.Println(os.Stderr, err)
+    }
+  #+end_src
+  
+  Afer that, we do some input munging using the =strings= package 
+  #+begin_src go
+   cmdString = strings.TrimSuffix(cmdString, "\n")
+   cmdStringsArr := strings.Fields(cmdString)
+  #+end_src
+*** the =Fields= method splits a string into an array and the saperator is the a whitespace (or any number of white spaces)
+*** the =TrimSuffix= returns the string it is passed without the specified suffix
+
+   The last stage is excuting the command and handling the output
+   #+begin_src go
+    cmd := exec.Command(cmdStringsArr[0], cmdStringsArr[1:]...) // the Command function takes in a command and its arguments spreaded
+    cmd.Stderr = os.Stderr // grab from Stderr and Stdout of the system and make it return for your command, which is basically just passing the output from your bash shell and bubble it up to our current shell
+    cmd.Stdout = os.Stdout
+    if err := cmd.Run(); err != nil { // handle errors accordingly
+      fmt.Println(os.Stderr, err)
+    }
+  #+end_src
+  
+  
+thats how you create a custom shell in Golang! hope you learned something
