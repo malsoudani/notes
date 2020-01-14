@@ -1,0 +1,111 @@
+#+TITLE: Intorduction to the gRPC framework 
+* what is gRPC? 
+in a very high level, it is a framework that lets you define your *Request* and *Response* and attempts to handle everything else for you.
+key points:
+** gRPC is developed by google
+
+** Relative to its predecessors it is...
+*** modern
+*** fast and effecient
+*** low latency
+
+** how does it do these things?
+*** built on top of HTTP2
+*** protocol buffers?
+
+** what is soo cool about gRPC?
+*** Language independent
+*** authentication pluggability
+*** logging and monitoring done well
+*** load balancing done well
+
+* gRPC is a Remote Procedure Call (RPC) framework
+  this basically means that instead of concerning yourself with a "resource" like REST does it, you just call the procedure on the server remotely from the client
+  
+* who uses this madness?
+** Google (their cloud services communicates almost exclusively using gRPC)
+** Netflix (Runtime Platform team)
+** Slack (ChatOps by using gRPC Stream)
+** Square (one of the first people to migrate all their APIs to gRPC)
+** CoreOS (Server-Server communication)
+** and many more  ..... 
+
+* protobufs?????
+** language agnostic
+** code can be generated for almost any language
+** the data is Binary and serialized (small payload)
+** it allows for easy API evolution
+
+
+** protocol buffers are used to define:
+*** Messages (data, Request and Response)
+*** Service (Service name and RPC endpoints)
+    #+NAME: basic messages and services
+    #+BEGIN_SRC go
+     syntax="proto3" 
+     
+     message Greeting {
+        string first_name = 1;
+     }
+     
+     message GreetRequest {
+        string greeting = 1;
+     }
+     
+     message GreetResponse {
+        string greeting = 1;
+     }
+     
+     service GreetService {
+        rpc Greet(GreetRequest) returns (GreetResponse) {};
+     }
+    #+end_src
+
+*** How much more effecient is protobufs vs json?
+    
+**** well here is a JSON payload that is around 60 bytes:
+     #+NAME: JSON (60 bytes)
+     #+BEGIN_SRC javascript
+      {
+        "age": 35,
+        "first_name": "Mohamed",
+        "last_name": "Alsoudani"
+      }
+     #+end_src
+**** the generated binary from its corresponding protocol buffer is 20-21 bytes only
+     #+NAME: protobufs (20 bytes)
+     #+BEGIN_SRC go
+     message Person {
+        int32 age = 1;
+        string first_name = 2;
+        string last_name = 3;
+     }
+     #+end_src
+     think of all the cpu parsing/network bandwidth you will be saving
+     
+* What about HTTP 2 ?
+** HTTP 2 lets us do some pretty cool stuff such as:
+*** multiple requests/responses per single TCP connection which allows for server and/or client streaming
+*** compressed headers (search huffman compression)
+*** parallel streamed responses (multiplexed instead of ordered)
+*** non-textual representation of data (binary format instead)    
+
+** Steaming in protobufs
+  #+NAME: protobufs (20 bytes)
+  #+BEGIN_SRC go
+  service GreetService {
+    // Unary 
+    rpc Greet(GreetRequest) returns (GreetResponse) {};
+    
+    // Server Streaming 
+    rpc Greet(GreetRequest) returns (stream GreetManyTimesResponse) {};
+    
+    // Client Steaming
+    rpc Greet(stream GreetManyTimeRequest) returns (GreetResponse) {};
+    
+    // Bi-directional Streaming
+    rpc Greet(stream GreetManyTimeRequest) returns (steam GreetManyTimesResponse) {};
+  }
+  #+end_src
+
+* 
