@@ -3,7 +3,6 @@
 in a very high level, it is a framework that lets you define your *Request* and *Response* and attempts to handle everything else for you.
 key points:
 ** gRPC is developed by google
-
 ** Relative to its predecessors it is...
 *** modern
 *** fast and effecient
@@ -108,4 +107,4 @@ key points:
   }
   #+end_src
 
-* 
+  
