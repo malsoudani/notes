@@ -108,4 +108,5 @@ key points:
   }
   #+end_src
 
-* 
+** HTTP 2 lets the client do "client side load balancing" 
+   

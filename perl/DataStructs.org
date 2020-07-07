@@ -1,4 +1,4 @@
-#+TITLE: Moe's Perl DesignPatterns Notes
+#+TITLE: Moe's Perl Design Patterns Notes
 
 * Perl Design Patterns:
 ** Iterators

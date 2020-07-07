@@ -1,0 +1,85 @@
+#+TITLE: Matrix operations assignment
+
+* in this assignment you will create the matrix class which will do the following:
+** the matrix class must accept a an array of arrays.. or in other words.. a matrix, example:
+   #+begin_src python
+     my_matrix = Matrix([
+         [1, 2, 3, 4],
+         [5, 6, 7, 8]
+     ])
+   #+end_src
+   
+** the matrix must be able to do 4 different functions:
+*** height:
+    #+begin_src python
+      my_matrix = Matrix([
+          [1, 2, 3, 4],
+          [5, 6, 7, 8]
+      ])
+      
+      print(my_matrix.height()) // will print 2
+    #+end_src
+*** width:
+    #+begin_src python
+      my_matrix = Matrix([
+          [1, 2, 3, 4],
+          [5, 6, 7, 8]
+      ])
+
+      print(my_matrix.width()) // will print 4
+    #+end_src
+*** transpose: a transpose of a matrix is in a way taking the matrix and fliping it on its face... look at the examples below to understand:
+    #+begin_src python
+      my_matrix = Matrix([
+          [1, 2],
+      ])
+
+      print(my_matrix.transpose()) # will print [[1],[2]] which is the same thing as [
+                                   #                                                     [1],
+                                   #                                                     [2]
+                                   #                                                 ]
+      # another example:
+      my_other_matrix = Matrix([
+          [1, 2],
+          [3, 4],
+          [5, 6]
+      ])
+
+      print(my__other_matrix.transpose()) # will print [[1, 3, 5],[2, 4, 6]] which is the same thing as [
+                                   #                                                               [1, 3, 5],
+                                   #                                                               [2, 4, 6]
+                                   #                                                             ]
+    #+end_src
+*** is_square: a square matrix is defined as an n*n matrix which means it has a height and a width that are equivalant to each other, NOTE: is_square method must return a boolean
+    #+begin_src python
+      my_matrix = Matrix([
+          [1, 2],
+      ])
+
+      print(my_matrix.is_square()) # will print False
+
+      # another example:
+      my_other_matrix = Matrix([
+          [1, 2],
+          [3, 4],
+      ])
+
+      print(my_other_matrix.is_square()) # will print True
+    #+end_src
+*** trace: a trace is the sum of the numbers on the main diagonal that is from the top left to the bottom right, NOTE: only square matercies can have a trace, so if the matrix is not square then throw an exception that states the dimensions of the matrix given  
+    #+begin_src python
+      my_matrix = Matrix([
+          [1, 2],
+      ])
+
+      print(my_matrix.trace()) # will throw an error like this: the given matrix is of dimensions 1x2 and does not support a trace operation
+
+      # another example:
+      my_other_matrix = Matrix([
+          [1, 2, 5],
+          [3, 4, 6],
+          [5, 6, 9]
+      ])
+
+      print(my_other_matrix.trace()) # will print 14 
+    #+end_src
