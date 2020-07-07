@@ -3,7 +3,6 @@
 in a very high level, it is a framework that lets you define your *Request* and *Response* and attempts to handle everything else for you.
 key points:
 ** gRPC is developed by google
-
 ** Relative to its predecessors it is...
 *** modern
 *** fast and effecient
@@ -107,6 +106,3 @@ key points:
     rpc Greet(stream GreetManyTimeRequest) returns (steam GreetManyTimesResponse) {};
   }
   #+end_src
-
-** HTTP 2 lets the client do "client side load balancing" 
-   
