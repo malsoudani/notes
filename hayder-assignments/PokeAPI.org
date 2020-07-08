@@ -1,0 +1,47 @@
+#+TITLE: Pokemon Client/Class assignment
+
+in this assignment you will learn how to research an api and pull out data from the body of an api response that are relevant to you.
+
+* Pokemon class / API client, in this assignment you will do the follwoing:
+
+** you'll create the =Pokemon= class with the following functionality:
+   * your class will be passed a single pokemon name or multiple pokemons, or if passed a non pokemon name please throw the exception stated below, example: 
+   #+begin_src python
+     my_pokemon = Pokemon("bulbasaur", "Pikachu", "Eevee") # works
+     my_pokemon2 = Pokemon("Raichu", "Charizard") # Also works
+     my_pokemon3 = Pokemon("Charmander") # Also works
+     my_pokemon4 = Pokemon("Hayder") # it throws the following exception specifically: "Hayder is not a Pokemon please try a different Pokemon Name 
+   #+end_src
+   * =def get_raw_resp=: the =get_raw_resp= function is used to hit the api and get the entire pokemon response.
+   * =def get_abilities=: this method returns a dictionary of the pokemons passed as its keys and an array of their abilities as the value example:
+   #+begin_src python
+     my_pokemon = Pokemon("charmander", "bulbasaur")
+     print(my_pokemon.get_abilities()) // prints {"charmander": ["blaze", "solar-power"], "bulbasaur": ["overgrow", "chlorophyll"]}
+   #+end_src
+   * =def most_exp=: this method should return the name of the pokemon with the most =base_experience=. if there is 2 or more pokemons that are both most experienced with the same =base_experience= then return an array of those pokemon names, example:
+   #+begin_src python
+     my_pokemon = Pokemon("blastoise", "bulbasaur")
+     print(my_pokemon.most_exp()) // prints "blastoise" because blastoise has 267 base experience unlike blulasaur with only 64 
+
+     my_pokemon2 = Pokemon("blastoise", "charmander", "incineroar")
+     print(my_pokemon2.most_exp()) // prints ["blastoise", "incineroar"] because they both have 267 base experience unlike charmander with only 62 
+   #+end_src
+   * =def get_stat_report=: this method should return a dictionary of dictionaries of all of the =stats= of the pokemons passed, Note that there is a stats attribute in your response, this works something like this:
+   #+begin_src python
+     my_pokemon = Pokemon("blastoise", "bulbasaur")
+     print(my_pokemon.get_stat_report()) // returns:
+     // {
+         // "bulbasaur": {
+             // "hp": 45 ,
+             // "attack": 49
+             // ..the rest of the stats (there should be 6 stats)
+         //},
+         // "blastoise": {
+             // "hp": 79,
+             // "attack": 83
+             // ..the rest of the stats (there should be 6 stats)
+         // }
+     // }
+   #+end_src
+
+Thats it... good luck. I have faith in you
