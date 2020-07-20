@@ -48,7 +48,6 @@
 
       // we can clean up the file here
       defer os.Remove(temp.Name())
-
     #+end_src
 
     you can also do this to clean up:
