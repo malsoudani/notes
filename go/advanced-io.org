@@ -1,0 +1,62 @@
+#+TITLE: Creating a Custom Shell in Golang
+
+** introduction
+   the io package in golang much like any other golang standard library packages, it offers a different approacha on to how to do things.
+   the io, ioutils and bufio come with very useful interfaces and structs that implement great methods
+
+** recepies
+   * =io.ReadFull()=
+    #+begin_src go
+      pngImage := []byte{137, 80, 78, 71, 13, 10, 26, 10, 11, 12, 14}
+
+      buf := make([]byte, 4)
+      // create a reader off of the bytes package
+      _, err := io.ReadFull(bytes.NewReader(pngImage), buf)
+      if err != nil {
+        log.Fatal("error reading png data")
+      }
+
+      // print it to std out
+      fmt.Println(buf)
+
+      // alternative way to write to std out using the io package
+      io.WriteString(os.Stdout, string(buf))
+    #+end_src
+
+    you can make a slice here with a specified size, here I want the image header so I'm just asking for the first 4 bytes.. notice that the NewReader will only put in the slice based on the size of the slice.. that is its not gonna "append" to the slice changing the cap of the underlying array that it points to or the length of the slice itself, thats why we use make() built in here because it creates an array with the given length and points our slice to hold it in its entirety.
+    
+   * =io.LimitReader()=
+    no need to create a buffer, with a limit reader you'll keep reading n bytes and then return EOF once you are done notice that the limit reader returns a Reader type which means that the "Read()" action has yet to be invoked at this point. while with the ReadFull method it invokes the action resulting the mothod to return direct meta data of the operation and also stamping the data in the reference "slices are array references" passed into the method
+    
+    then we do the copy action which does a "Read" off the reader and instead of stamping an array as its buffer it directly writes it to stdout.. this is a better experience if you are buffering huge amonts of text, so that you can see the results as soon as they are excuted instead of building a buffer and running through it later.
+
+    #+begin_src go
+      lr := io.LimitReader(bytes.NewReader(pngImage), 4)
+
+      if _, err := io.Copy(os.Stdout, lr); err != nil {
+        log.Fatal(err)
+      }
+    #+end_src
+
+   * =io.TempFile()=
+    #+begin_src go
+      // here we are creating a temp file which is pretty fun, we will be writing on that more later
+      temp, err := ioutil.TempFile(".", "temp_")
+      if err != nil {
+        log.Fatal(err)
+      }
+
+      // we can clean up the file here
+      defer os.Remove(temp.Name())
+
+    #+end_src
+
+    you can also do this to clean up:
+    #+begin_src go
+      // or close the file here
+      defer func(t *os.File) {
+      	if err := t.Close(); err != nil {
+      		log.Fatal(err)
+      	}
+      }(temp)
+    #+end_src
